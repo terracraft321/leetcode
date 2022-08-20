@@ -1,0 +1,40 @@
+
+
+Day 1.
+
+217. Contains duplicate
+
+    def containsDuplicate(self, nums: List[int]) -> bool:
+	numset = set(nums)
+	return len(numset) != len(nums)
+
+or
+
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        hashset = set()
+
+	for n in nums:
+		if n in hashset:
+			return True
+		hashset.add(n)
+	return False
+
+1.
+
+class Solution:
+	def containsDuplciate(self, nums: List[int]) -> bool:
+		hashset = set()
+
+	for in n nums:
+		if n in hashset:
+			return true
+		hashset.add(n)
+	return false
+
+2.
+
+    def containsDuplicate(self, nums: List[int]) -> bool:
+	numset = set(nums)
+	return len(numset) != len(nums)
