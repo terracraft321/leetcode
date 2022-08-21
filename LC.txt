@@ -138,8 +138,15 @@ Class Solution:
 
 347. Top K Frequent Elements
 
-: Use Bucket Sort in a unbounded manner, since our values go from 1-100 or even a million
-: in bounded it would be just 1-10, usually how it's taught
+#: Use Bucket Sort in a unbounded manner, since our values go from 1-100 or even a million
+#: in bounded it would be just 1-10, usually how it's taught
+#: In the first one you'd just have count and frequency
+#: Here we count the number of elements in the input array, and use that value bound our new array
+#: So we only count the values that we have to count, which makes our problem in scope smaller.
+#: Then we only count the frequency for every number
+#: Then we traverse the list from right to left, from -1, to zero, and we decrement by -1
+#: And we just return largest K amounts, by how many times the questions ask ## or return the whole array.
+
 
 class Solution: 
 	def topKFrequent(self, nums: List[int], k: int) -> List[int]:
@@ -148,23 +155,17 @@ class Solution:
 
 		# init counts, and frequency 
 		for n in nums:
-			count [n] = 1 + count.get(n, 0) # 0 default value for count
-		for n, c in count.items(): 
-			freq[c].append(n) # how many times they occur
+			count [n] = 1 + count.get(n, 0) # 0 default value for count, how many times each number in count occurs
+		for n, c in count.items(): # it returns every single key value pair, we've added to our dictionary.
+			freq[c].append(n) # for every key value pair, number and count, for count (index) we append to that list, n, value N occurs C times. - how many times they occur, so I think that's what what let us have these both arrays                                     together. 
 
-		res []  # will reach size of K at some point, because we have K values in our input array nums. 
-		for i in range(len(freq) - 1, 0, -1)   # -1 the index we start at, 0 the index we stop at, -1 we decrement so we go towards the left <-- 
-			for n in freq[i]: #anything in I is another sublist, so it could be empty or it could have an value, that's frequency 
-			res.append(n) # we get the values that occur the most by frequency, and we append it into our output list 
-			if len(res) == k: # if the length of result matches K, 
-			return res # return result, it has to end up at some point, no need for return state outside of the loop. 
+		res = []  # will reach size of K at some point, because we have K values in our input array nums. 
+		for i in range(len(freq) - 1, 0, -1):   # -1 the index we start at, 0 the index we stop at, -1 we decrement so we go towards the left <-- 
+			    for n in freq[i]: #anything in I is another sublist, so it could be empty or it could have an value, that's frequency 
+			        res.append(n) # we get the values that occur the most by frequency, and we append it into our output list 
+			        if len(res) == k: # if the length of result matches K, 
+			            return res # return result, it has to end up at some point, no need for return state outside of the loop. 
 
 			# with heap, O(klogn)
-			# with this trick, O(n) time
-		
-
-
-
-
-
+			# with this trick, O(n) time 
 		-----------------------------------------
