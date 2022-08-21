@@ -233,3 +233,28 @@ class Solution:
 
 
 ----------------------------------------------------------------------------------------
+128. Longest Consecutive Sequence
+
+
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        numSet = set(nums)
+        longest = 0
+        
+        for n in nums:
+            # check if it's a start of a sequence
+            if (n - 1) not in numSet:
+                length = 1 
+                while (n + length) in numSet:
+                        length += 1
+                longest = max(length, longest)
+        return longest
+
+-----------------------------------------------------
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        if s != s[::-1]:
+            return True
+        else: 
+            return False
