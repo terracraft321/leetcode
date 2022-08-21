@@ -127,7 +127,7 @@ Class Solution:
 		count = [0] * 26 # Array consisting of all lower case charachters  a...z
 		for c in s:
 			count[ord(c) - ord('a')] += 1 # mapping a to index 0, mapping z to 25, ascii - lowercase a, 80-80, 81-80...
-		ans[tuple(count)].append(s)  # lists cannot be keys, tuples are non mutable
+		ans[tuple(count)].append(s)  # lists cannot be keys, tuples are non mutable  # state cannot be modified after it is created, a bit like a constant
 	return ans.values()  # of keys 
 
 	# O(m * n)
