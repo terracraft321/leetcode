@@ -169,3 +169,24 @@ class Solution:
 			# with heap, O(klogn)
 			# with this trick, O(n) time 
 		-----------------------------------------
+
+
+
+		238. Product of Array Except Self
+
+class Solution:
+    def productExceptSelf(self, nums:  List[int]) -> list[int]:
+        res = [1] * (len(nums))
+
+        prefix = 1  #prefix array 
+        for i in range(len(nums)):
+            res[i] = prefix
+            prefix *= nums[i]  #multiply left to right
+        postfix = 1 #turn prefix into postfix
+        for i in range(len(nums) - 1, -1, -1): #multiply right to left
+            res[i] *= postfix
+            postfix *= nums[i] # update values 
+        return res
+		
+
+		--------------------------------------------
