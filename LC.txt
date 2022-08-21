@@ -1,5 +1,7 @@
+https://neetcode.io/
 
-
+Blind75
+----------------------
 Day 1.
 
 217. Contains duplicate. Use a hash set
@@ -109,3 +111,27 @@ o(n)
 o(n)
 
 ---------------
+49. group-anagrams
+
+Use a hash map, key:value pair 
+count all charachters, key -> which strings have this pattern of count, value, eat, tea, eat
+Big of (m*n*26) constant is dropped 
+O(m*n)
+
+
+Class Solution:
+	def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+	ans = collections.defaultdict(list)
+
+	for s in strs:
+		count = [0] * 26 # Array consisting of all lower case charachters  a...z
+		for c in s:
+			count[ord(c) - ord('a')] += 1 # mapping a to index 0, mapping z to 25, ascii - lowercase a, 80-80, 81-80...
+		ans[tuple(count)].append(s)  # lists cannot be keys, tuples are non mutable
+	return ans.values()  # of keys 
+
+	# O(m * n)
+	# m, number of strings given
+	# n, average length of string 
+
+---------------------------
