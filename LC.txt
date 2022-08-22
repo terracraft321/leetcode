@@ -619,7 +619,8 @@ class Solution:
 
         return dummy.next
 ----------------------------------------------------------------------------------------
-Reorder List. 
+143. Reorder List
+
 (in place)
 # slow pointer and fast pointer
 # find the middle of the list
@@ -660,3 +661,31 @@ class Solution:
 # linear time O(1)
 # We're not using extra memory so I assume it's O(1) as well. 
 ---------------------------------------------------------------------------------------------------
+19. Remove Nth Node From End of List
+
+# shifting right by same amount of distance, say n=2 
+# at the end move the nth node, compared to null, into null to delete it.
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        dummy = ListNode(0, head)
+        left = dummy
+        right = head 
+        
+        while n > 0 and right: 
+            right =  right.next 
+            n -= 1 
+            
+        while right:
+            left = left.next
+            right =  right.next
+                
+                # delete 
+        left.next = left.next.next
+        return dummy.next 
+
