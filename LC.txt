@@ -522,3 +522,35 @@ class Solution:
 # O(n) also possible but not as efficient for large inputs. 
 
 ---------------------------------------------------------------------
+
+206. Reverse a linked list 
+: Iterate through the list moving the values over.
+: Iterative solution 
+
+: while curr
+: temp = curr.next
+: curr.next = prev ( we make a temp variable, move old value into our temp)
+: prev = curr (we move old value into current)
+: curr = temp (we take the value from temp and set it as current)
+
+: 123
+: 3 temp
+: 32
+: tmp 1 
+: 321  
+: I guess
+
+class Solution: 
+    def reverseList(self, head: ListNode) -> ListNode: 
+        prev, curr = None, head # init list 
+
+        while curr: # while loop 
+            nxt = curr.next #  temporary variable 
+            curr.next = prev # we move previous value forward 
+            prev = curr # the value before it becomes the new current value we're looking at 
+            curr = nxt # we move current value forward 
+        return prev
+
+
+
+-------------------------------------
