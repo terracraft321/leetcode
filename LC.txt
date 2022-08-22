@@ -663,6 +663,7 @@ class Solution:
 ---------------------------------------------------------------------------------------------------
 19. Remove Nth Node From End of List
 
+# left pointer, right pointer, nth distance.
 # shifting right by same amount of distance, say n=2 
 # at the end move the nth node, compared to null, into null to delete it.
 
@@ -688,4 +689,36 @@ class Solution:
                 # delete 
         left.next = left.next.next
         return dummy.next 
+--------------------------------------------------------------------------------------------------------
 
+141. Linked List Cycle
+
+# Floyds Algorithm
+# Tortoise and hare problem
+# slow pointer and fast pointer
+# Cycle
+# -> -> x( )cycle here, meet at x
+#if the slow and fast pointer meet return true, if not return false
+# they will meet at some point, if there's a cycle, since the cycle has to start somewhere.
+
+
+141. Linked List Cycle
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        slow, fast = head, head
+        
+        while fast and fast.next:  ## while fast and fast.next 
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
+
+----------------------------------
