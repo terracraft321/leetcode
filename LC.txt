@@ -489,4 +489,36 @@ class Solution:
                 return False
             stack.pop() 
             
-        return not stack
+        return not stack     
+
+
+------------------------------------------------
+
+33. Search in Rotated Sorted Array
+: left pointer and right pointer, linear search since the array is sorted? 
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            mid = (l + r) // 2
+            if target == nums[mid]:
+                return mid
+            #left sorted portion
+            if nums[l] <= nums[mid]:
+                if target > nums[mid] or target < nums[l]:
+                    l = mid + 1
+                else:
+                    r = mid - 1
+                    #right sorted protio
+            else: 
+                if target < nums[mid] or target > nums[r]:
+                    r = mid - 1 
+                else: 
+                    l = mid + 1 
+        return -1 
+
+# Time complexity: Binary search: O(n log n)
+# O(n) also possible but not as efficient for large inputs. 
+
+---------------------------------------------------------------------
