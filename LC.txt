@@ -345,7 +345,7 @@ while l < r:
 
         -------------
 
-        :calculate area
+        : calculate area
         : bruteforce
         : move pillar, left to right with steps
         : and then in half steps, in a way from right to left
@@ -469,3 +469,24 @@ class Solution:
         return s[l : r + 1] if resLen != float("infinity") else ""
 
         -------------------------------------------------------------------
+
+20. Valid Parentheses
+
+# use a stack
+# if opening and closing matching, pop them,
+# if not possible return false ig? 
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        Map = {")": "(", "]": "[", "}": "{"}
+        stack = []
+        
+        for c in s:
+            if c not in Map:
+                stack.append(c)
+                continue
+            if not stack or stack[-1] != Map[c]:
+                return False
+            stack.pop() 
+            
+        return not stack
