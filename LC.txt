@@ -770,3 +770,97 @@ class Solution:
 # Time complexity O(n log k) 
 
 -------------------------------
+
+# swap the children
+# compertmentalize into recursive
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return None
+        
+        # swap the children
+        
+        tmp = root.left  #temporary variable 
+        root.left = root.right  # rootleftbecomesrootright
+        root.right = tmp # rootright becomes temp 
+        
+        self.invertTree(root.left) # invert the left root of the tree 
+        self.invertTree(root.right) # invert the right root of the tree 
+        return root 
+
+------------------------------------------------------------------------
+if not root:
+    return none
+
+tmp = root.left
+roof.left = root.right 
+root.right = tmp 
+
+self.invertTree(root.left)
+self.invertTree(root.right)
+return root 
+
+----------------------------------------------------------------
+
+Invert a binary tree
+
+#BFS
+#DFS 
+#in-order, post order, doesn't matter
+#I prefer DFS and post order 
+#add the children to the stack, and their pos/level as we search through
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        stack = [[root, 1]]
+        res = 0
+        
+        while stack:
+            node, depth = stack.pop()
+            
+            if node:
+                res = max(res, depth)
+                stack.append([node.left, depth + 1])
+                stack.append([node.right, depth + 1 ])
+        return res
+
+------------------------------------------------------------------
+
+100. Same Tree
+
+time complexity O(p+q)
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+    #dealing with edge cases
+        if not p and not q:
+            return True
+        if not p or not q or  p.val != q.val:
+            return False
+        
+        # AND together, true or false 
+        return (self.isSameTree(p.left, q.left) and
+        self.isSameTree(p.right, q.right))
+
+        
+------------------------------------------------------------------
