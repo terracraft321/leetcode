@@ -1307,7 +1307,7 @@ class MedianFinder:
         if self.small and self.large and (-1 * self.small[0]) > self.large[0]:
             val = -1 * heapq.heappop(self.small)
             heapq.heappush(self.large, val)
-
+ 
         if len(self.small) > len(self.large) + 1:
             val = -1 * heapq.heappop(self.small)
             heapq.heappush(self.large, val)
@@ -1323,3 +1323,28 @@ class MedianFinder:
         return (-1 * self.small[0] + self.large[0]) / 2
 
 ------------------------------------------------------------
+Combination sum
+
+# combinatorics
+# list, add sum at the end, if not possible for multiplication don't doesn
+# just keep going until the end 
+
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = []
+
+        def dfs(i, cur, total):
+            if total == target:
+                res.append(cur.copy())
+                return
+            if i >= len(candidates) or total > target:
+                return
+
+            cur.append(candidates[i])
+            dfs(i, cur, total + candidates[i])
+            cur.pop()
+            dfs(i + 1, cur, total)
+
+        dfs(0, [], 0)
+        return res
+----------------------------------------------------------------
