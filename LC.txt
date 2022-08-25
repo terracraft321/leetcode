@@ -1,151 +1,153 @@
 from copy import copy
+from tkinter import Y
 
+# https://neetcode.io/
 
-https: // neetcode.io/
+# Blind75
+######################################################
+# Day 1.
 
-Blind75
-----------------------
-Day 1.
+# 217. Contains duplicate. Use a hash set
 
-217. Contains duplicate. Use a hash set
-
-	def containsDuplicate(self, nums: List[int]) -> bool:
-	numset = set(nums)
-	return len(numset) != len(nums)
-
-or
+    def containsDuplicate(self, nums: List[int]) -> bool:
+    numset = set(nums)
+    return len(numset) != len(nums)
+######################################################
 
 
 class Solution:
-	def containsDuplicate(self, nums: List[int]) -> bool:
-		hashset = set()
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        hashset = set()
 
-	for n in nums:
-		if n in hashset:
-			return True
-		hashset.add(n)
-	return False
+    for n in nums:
+        if n in hashset:
+            return True
+        hashset.add(n)
+    return False
 
 
+######################################################
 1.
 
 
 class Solution:
-	def containsDuplciate(self, nums: List[int]) -> bool:
-		hashset = set()
+    def containsDuplciate(self, nums: List[int]) -> bool:
+        hashset = set()
 
-	for in n nums:
-		if n in hashset:
-			return true
-		hashset.add(n)
-	return false
-
-
-Time and space complexity: O(n), O(n)
+    for in n nums:
+        if n in hashset:
+            return true
+        hashset.add(n)
+    return false
 
 
-2.
-
-	def containsDuplicate(self, nums: List[int]) -> bool:
-	numset = set(nums)
-	return len(numset) != len(nums)
+# Time and space complexity: O(n), O(n)
 
 
-------------------------------------------------------------------
+# 2.
 
-242. Valid Anagram.
 
-Use a hashmap or array.
+    def containsDuplicate(self, nums: List[int]) -> bool:
+    numset = set(nums)
+    return len(numset) != len(nums)
+
+
+######################################################
+
+# 242. Valid Anagram.
+
+# Use a hashmap or array.
 
 
 class Solution:
-	def isAnagram(self, s: str, t: str) -> bool:
-	return Counter(s) == Counter(t)
+    def isAnagram(self, s: str, t: str) -> bool:
+    return Counter(s) == Counter(t)
 
-	if len(s) != len(t):
-	return False
-	countS, countT = {}, {}
+    if len(s) != len(t):
+    return False
+    countS, countT = {}, {}
 
-	for i in range(len(s)):
-	countS[s[i]] = 1 + countS.get(s[i], 0)
-	countT[t[i]] = 1 + countT.get(t[i], 0)
-	for c in countS:
-	if countS[c] != countT.get(c, 0):
-	return False
+    for i in range(len(s)):
+    countS[s[i]] = 1 + countS.get(s[i], 0)
+    countT[t[i]] = 1 + countT.get(t[i], 0)
+    for c in countS:
+    if countS[c] != countT.get(c, 0):
+    return False
 
-	return True
-
-
-Time complexity
-O(s+t)
-Need extra memory.
-
-sorted Counter(s) == Counter(t)
+    return True
 
 
-Memory: O(1)
-Time complexity: O(n log n)
+# Time complexity
+# O(s+t)
+# Need extra memory.
+
+# sorted Counter(s) == Counter(t)
 
 
----------
+# Memory: O(1)
+# Time complexity: O(n log n)
+
+
+######################################################
 
 
 class solution:
-	def twoSum(self, nums: List[int], target: int) -> List[
- 	prevMap = {}
+    def twoSum(self, nums: List[int], target: int) -> List[
+     prevMap= {}
 
 
 for i, n in enumerate(nums):
-	diff = target - n
-	if diff in prevMap:
-		return [prevMap[diff], i]
-	prevMap{n] = i
+    diff = target - n
+    if diff in prevMap:
+        return [prevMap[diff], i]
+    prevMap{n] = i
 return
 
 
 
 class Solution:
-	def twoSum(self, nums: List[int], target: int) -> List[int]:
-		prevMap = {}  # val -> index
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        prevMap = {}  # val -> index
 
-		for i, n in enumerate(nums):
-			diff = target - n
-			if diff in prevMap:
-				return [prevMap[diff], i]
-			prevMap[n] = i
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in prevMap:
+                return [prevMap[diff], i]
+            prevMap[n] = i
 
-o(n)
-o(n)
+# o(n)
+# o(n)
 
-- --------------
-49. group-anagrams
+######################################################
+# 49. group-anagrams
 
-Use a hash map, key: value pair
-count all charachters, key -> which strings have this pattern of count, value, eat, tea, eat
-Big of(m*n*26) constant is dropped
-O(m*n)
+# Use a hash map, key: value pair
+# count all charachters, key -> which strings have this pattern of count, value, eat, tea, eat
+# Big of(m*n*26) constant is dropped
+# O(m*n)
 
 
 Class Solution:
-	def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-	ans = collections.defaultdict(list)
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+    ans = collections.defaultdict(list)
 
-	for s in strs:
-		count = [0] * 26  # Array consisting of all lower case charachters  a...z
-		for c in s:
-			# mapping a to index 0, mapping z to 25, ascii - lowercase a, 80-80, 81-80...
-			count[ord(c) - ord('a')] += 1
-		# lists cannot be keys, tuples are non mutable  # state cannot be modified after it is created, a bit like a constant
-		ans[tuple(count)].append(s)
-	return ans.values()  # of keys
+    for s in strs:
+        # Array consisting of all lower case charachters  a...z
+        count = [0] * 26
+        for c in s:
+            # mapping a to index 0, mapping z to 25, ascii - lowercase a, 80-80, 81-80...
+            count[ord(c) - ord('a')] += 1
+        # lists cannot be keys, tuples are non mutable  # state cannot be modified after it is created, a bit like a constant
+        ans[tuple(count)].append(s)
+    return ans.values()  # of keys
 
-	# O(m * n)
-	# m, number of strings given
-	# n, average length of string
+    # O(m * n)
+    # m, number of strings given
+    # n, average length of string
 
-- --------------------------
+######################################################
 
-347. Top K Frequent Elements
+# 347. Top K Frequent Elements
 
 #: Use Bucket Sort in a unbounded manner, since our values go from 1-100 or even a million
 #: in bounded it would be just 1-10, usually how it's taught
@@ -158,468 +160,459 @@ Class Solution:
 
 
 class Solution:
-	def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-		count = {}
-		freq = [[] for i in range(len(nums) + 1)]
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count = {}
+        freq = [[] for i in range(len(nums) + 1)]
 
-		# init counts, and frequency
-		for n in nums:
-			# 0 default value for count, how many times each number in count occurs
-			count[n] = 1 + count.get(n, 0)
-		# it returns every single key value pair, we've added to our dictionary.
-		for n, c in count.items():
-			# for every key value pair, number and count, for count (index) we append to that list, n, value N occurs C times. - how many times they occur, so I think that's what what let us have these both arrays                                     together.
-			freq[c].append(n)
+        # init counts, and frequency
+        for n in nums:
+            # 0 default value for count, how many times each number in count occurs
+            count[n] = 1 + count.get(n, 0)
+        # it returns every single key value pair, we've added to our dictionary.
+        for n, c in count.items():
+            # for every key value pair, number and count, for count (index) we append to that list, n, value N occurs C times. - how many times they occur, so I think that's what what let us have these both arrays                                     together.
+            freq[c].append(n)
 
-		# will reach size of K at some point, because we have K values in our input array nums.
-		res = []
-		# -1 the index we start at, 0 the index we stop at, -1 we decrement so we go towards the left <--
-		for i in range(len(freq) - 1, 0, -1):
-				for n in freq[i]:  # anything in I is another sublist, so it could be empty or it could have an value, that's frequency
-					# we get the values that occur the most by frequency, and we append it into our output list
-					res.append(n)
-					if len(res) == k:  # if the length of result matches K,
-						# return result, it has to end up at some point, no need for return state outside of the loop.
-						return res
+        # will reach size of K at some point, because we have K values in our input array nums.
+        res = []
+        # -1 the index we start at, 0 the index we stop at, -1 we decrement so we go towards the left <--
+        for i in range(len(freq) - 1, 0, -1):
+                # anything in I is another sublist, so it could be empty or it could have an value, that's frequency
+                for n in freq[i]:
+                    # we get the values that occur the most by frequency, and we append it into our output list
+                    res.append(n)
+                    if len(res) == k:  # if the length of result matches K,
+                        # return result, it has to end up at some point, no need for return state outside of the loop.
+                        return res
 
-			# with heap, O(klogn)
-			# with this trick, O(n) time
-		- ----------------------------------------
+            # with heap, O(klogn)
+            # with this trick, O(n) time
+######################################################
 
 
 
-		238. Product of Array Except Self
+        # 238. Product of Array Except Self
 
-		# product, multiplication
-		# in place manipulation of the array
+        # product, multiplication
+        # in place manipulation of the array
 
 class Solution:
-	def productExceptSelf(self, nums:  List[int]) -> list[int]:
-		res = [1] * (len(nums))
+    def productExceptSelf(self, nums:  List[int]) -> list[int]:
+        res = [1] * (len(nums))
 
-		prefix = 1  # prefix array
-		for i in range(len(nums)):
-			res[i] = prefix
-			prefix *= nums[i]  # multiply left to right
-		postfix = 1  # turn prefix into postfix
-		for i in range(len(nums) - 1, -1, -1):  # multiply right to left
-			res[i] *= postfix
-			postfix *= nums[i]  # update values
-		return res
+        prefix = 1  # prefix array
+        for i in range(len(nums)):
+            res[i] = prefix
+            prefix *= nums[i]  # multiply left to right
+        postfix = 1  # turn prefix into postfix
+        for i in range(len(nums) - 1, -1, -1):  # multiply right to left
+            res[i] *= postfix
+            postfix *= nums[i]  # update values
+        return res
 
-		# o(n) without extra memory
-		- -------------------------------------------
+        # o(n) without extra memory
+######################################################
 
-659 · Encode and Decode Strings.
+# 659 · Encode and Decode Strings.
 # string manipulation
 # pound symbol
 # read length of string
 # in place modification of array
 
-		class Solution:
-	"""
-	@param: strs: a list of strings
-	@return: encodes a list of strings to a single string.
-	"""
+        class Solution:
+    """
+    @param: strs: a list of strings
+    @return: encodes a list of strings to a single string.
+    """
 
-	def encode(self, strs):
-		res = ""
-		for s in strs:
-			res += str(len(s)) + "#" + s
-		return res
+    def encode(self, strs):
+        res = ""
+        for s in strs:
+            res += str(len(s)) + "#" + s
+        return res
 
-	"""
-	@param: str: A string
-	@return: dcodes a single string to a list of strings
-	"""
+    """
+    @param: str: A string
+    @return: dcodes a single string to a list of strings
+    """
 
-	def decode(self, str):
-		res, i = [], 0
+    def decode(self, str):
+        res, i = [], 0
 
-		while i < len(str):
-			j = i
-			while str[j] != "#":
-				j += 1
-			length = int(str[i:j])
-			res.append(str[j + 1: j + 1 + length])
-			i = j + 1 + length
-		return res
-
-
+        while i < len(str):
+            j = i
+            while str[j] != "#":
+                j += 1
+            length = int(str[i:j])
+            res.append(str[j + 1: j + 1 + length])
+            i = j + 1 + length
+        return res
 
 
-- ---------------------------------------------------------------------------------------
-128. Longest Consecutive Sequence
 
-
-class Solution:
-	def longestConsecutive(self, nums: List[int]) -> int:
-		numSet = set(nums)
-		longest = 0
-
-		for n in nums:
-			# check if it's a start of a sequence
-			if (n - 1) not in numSet:
-				length = 1
-				while (n + length) in numSet:
-						length += 1
-				longest = max(length, longest)
-		return longest
-
-- ----------------------------------------------------
-
-valid-palindrome
-
-class Solution:
-	def isPalindrome(self, s: str) -> bool:
-		if s != s[::-1]:
-			return True
-		else:
-			return False
-
-Works for 378/420: ) good enough
-
-
----------------------------------------------
+######################################################
+# 128. Longest Consecutive Sequence
 
 
 class Solution:
-	def isPalindrome(self, s: str) -> bool:
-		newStr = ""
+    def longestConsecutive(self, nums: List[int]) -> int:
+        numSet = set(nums)
+        longest = 0
 
-		for c in s:
-			if c.isalnum():
-				newStr += c.lower()
-		return newStr == newStr[::-1]
+        for n in nums:
+            # check if it's a start of a sequence
+            if (n - 1) not in numSet:
+                length = 1
+                while (n + length) in numSet:
+                        length += 1
+                longest = max(length, longest)
+        return longest
 
+######################################################
 
-----------------------------------------------------------
-15. 3Sum
+# valid-palindrome
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        if s != s[::-1]:
+            return True
+        else:
+            return False
+
+# Works for 378/420: ) good enough
+# should sanitize everything from a-z to lower letters (chars)
+######################################################
 
 
 class Solution:
-	def threeSum(self, nums: List[int]) -> List[List[int]]:
-		res = []
-		nums.sort()
+    def isPalindrome(self, s: str) -> bool:
+        newStr = ""
 
-		for i, a in enumerate(nums):
-			if i > 0 and a == nums[i - 1]:
-				continue
+        for c in s:
+            if c.isalnum():
+                newStr += c.lower()
+        return newStr == newStr[::-1]
 
-			l, r = i + 1, len(nums) - 1
-			while l < r:
-				threeSum = a + nums[l] + nums[r]
-				if threeSum > 0:
-					r -= 1
-				elif threeSum < 0:
-					l += 1
-				else:
-					res.append([a, nums[l], nums[r]])
-					l += 1
-					while nums[l] == nums[l - 1] and l < r:
-						l += 1
-		return res
+######################################################
+# 15. 3Sum
+# two sum but with a subproblem
+#
+
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
+
+        for i, a in enumerate(nums):
+            if i > 0 and a == nums[i - 1]:
+                continue
+
+            l, r = i + 1, len(nums) - 1
+            while l < r:
+                threeSum = a + nums[l] + nums[r]
+                if threeSum > 0:
+                    r -= 1
+                elif threeSum < 0:
+                    l += 1
+                else:
+                    res.append([a, nums[l], nums[r]])
+                    l += 1
+                    while nums[l] == nums[l - 1] and l < r:
+                        l += 1
+        return res
 
 
---------------------------------------------------------------------
+######################################################
 
 res = 0
 l, r = 0, len(height) - 1
 
 while l < r:
-	area = (r - 1) * min(height[l], height[r])
-	res = max(res, area)
+    area = (r - 1) * min(height[l], height[r])
+    res = max(res, area)
 
-	if height[l] < height[r]:
-		l += 1
-	else:
-		r -= 1
+    if height[l] < height[r]:
+        l += 1
+    else:
+        r -= 1
 
-	return res
+    return res
 
-	# O(n)
+    # O(n)
 
-	-------------
+######################################################
+    class Solution:
 
-	class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
 
-	def threeSum(self, nums: List[int]) -> List[List[int]]:
-		res = []
-		nums.sort()
+        for i, a in enumerate(nums):
+            if i > 0 and a == nums[i - 1]:
+                continue
 
-		for i, a in enumerate(nums):
-			if i > 0 and a == nums[i - 1]:
-				continue
+            l, r = i + 1, len(nums) - 1
+            while l < r:
+                threeSum = a + nums[l] + nums[r]
+                if threeSum > 0:
+                    r -= 1
+                elif threeSum < 0:
+                    l += 1
+                else:
+                    res.append([a, nums[l], nums[r]])
+                    l += 1
+                    while nums[l] == nums[l - 1] and l < r:
+                        l += 1
+        return result
 
-			l, r = i + 1, len(nums) - 1
-			while l < r:
-				threeSum = a + nums[l] + nums[r]
-				if threeSum > 0:
-					r -= 1
-				elif threeSum < 0:
-					l += 1
-				else:
-					res.append([a, nums[l], nums[r]])
-					l += 1
-					while nums[l] == nums[l - 1] and l < r:
-						l += 1
-		return result
+######################################################
 
-		-------------
-
-		: calculate area
-		: bruteforce
-		: move pillar, left to right with steps
-		: and then in half steps, in a way from right to left
-		: stop until we have found our area, without spilling water.
-
-
-class Solution:
-	def maxArea(self, height: List[int]) -> int:
-		l = 0
-		r = len(height)-1
-		res = 0
-		while l < r:
-			area = (r - l) * min(height[l], height[r])
-			res = max(area, res)
-			if height[l] < height[r]:
-				l = l+1
-			else:
-				r = r-1
-		return res
-
-
-this works
-https: // leetcode.com/problems/container-with -most-water/discuss/1038263/Python-Solution
-------------------------
-
-121. Best Time to Buy and Sell Stock
-
-: Left pointer, right pointer
+  #      : calculate area
+ #       : bruteforce
+  #      : move pillar, left to right with steps
+ #       : and then in half steps, in a way from right to left
+ #       : stop until we have found our area, without spilling water.
 
 
 class Solution:
-	def maxProfit(self, prices: List[int]) -> int:
-		res = 0
-
-		l = 0
-		for r in range(1, len(prices)):
-			if prices[r] < prices[l]:
-				l = r
-			res = max(res, prices[r] - prices[l])
-		return res
-
-
----------------------------
-
-3. Longest Substring Without Repeating Characters
-: Sliding window
+    def maxArea(self, height: List[int]) -> int:
+        l = 0
+        r = len(height)-1
+        res = 0
+        while l < r:
+            area = (r - l) * min(height[l], height[r])
+            res = max(area, res)
+            if height[l] < height[r]:
+                l = l+1
+            else:
+                r = r-1
+        return res
 
 
-class Solution:
-	def lengthOfLongestSubstring(self, s: str) -> int:
-		charSet = set()
-		l = 0
-		res = 0
+# this works
+# https: // leetcode.com/problems/container-with -most-water/discuss/1038263/Python-Solution
+######################################################
 
-		for r in range(len(s)):
-			while s[r] in charSet:
-				charSet.remove(s[l])
-				l += 1
-			charSet.add(s[r])
-			res = max(res, r - l + 1)
-		return res
+# 121. Best Time to Buy and Sell Stock
 
-
---------------------------------
-
-424. Longest Repeating Character Replacement
-
-: sliding window as well IG
+#: Left pointer, right pointer
 
 
 class Solution:
-	def characterReplacement(self, s: str, k: int) -> int:
-		count = {}
-		res = 0
+    def maxProfit(self, prices: List[int]) -> int:
+        res = 0
 
-		l = 0
-		maxf = 0
-		for r in range(len(s)):
-			count[s[r]] = 1 + count.get(s[r], 0)
-			maxf = max(maxf, count[s[r]])
-
-			while (r - l + 1) - maxf > k:
-				count[s[l]] -= 1
-				l += 1
-
-			res = max(res, r - l + 1)
-		return res
-
-		# O(1) ig
+        l = 0
+        for r in range(1, len(prices)):
+            if prices[r] < prices[l]:
+                l = r
+            res = max(res, prices[r] - prices[l])
+        return res
 
 
------------------------------------
-
-76. Minimum Window Substring
-: two hashtables, comparison, while loop, compare counts
-: substring problem
-: sliding window
+######################################################
+# 3. Longest Substring Without Repeating Characters
+#: Sliding window
 
 
 class Solution:
-	def minWindow(self, s: str, t: str) -> str:
-		if t == "":
-			return ""
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        charSet = set()
+        l = 0
+        res = 0
 
-		countT, window = {}, {}
-		for c in t:
-			countT[c] = 1 + countT.get(c, 0)
-
-		have, need = 0, len(countT)
-		res, resLen = [-1, -1], float("infinity")
-		l = 0
-		for r in range(len(s)):
-			c = s[r]
-			window[c] = 1 + window.get(c, 0)
-
-			if c in countT and window[c] == countT[c]:
-				have += 1
-
-			while have == need:
-				# update our result
-				if (r - l + 1) < resLen:
-					res = [l, r]
-					resLen = r - l + 1
-				# pop from the left of our window
-				window[s[l]] -= 1
-				if s[l] in countT and window[s[l]] < countT[s[l]]:
-					have -= 1
-				l += 1
-		l, r = res
-		return s[l: r + 1] if resLen != float("infinity") else ""
-
-		-------------------------------------------------------------------
+        for r in range(len(s)):
+            while s[r] in charSet:
+                charSet.remove(s[l])
+                l += 1
+            charSet.add(s[r])
+            res = max(res, r - l + 1)
+        return res
 
 
-20. Valid Parentheses
+######################################################
+
+# 424. Longest Repeating Character Replacement
+
+#: sliding window as well IG
+
+
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        count = {}
+        res = 0
+
+        l = 0
+        maxf = 0
+        for r in range(len(s)):
+            count[s[r]] = 1 + count.get(s[r], 0)
+            maxf = max(maxf, count[s[r]])
+
+            while (r - l + 1) - maxf > k:
+                count[s[l]] -= 1
+                l += 1
+
+            res = max(res, r - l + 1)
+        return res
+
+        # O(1) ig
+
+
+######################################################
+
+# 76. Minimum Window Substring
+#: two hashtables, comparison, while loop, compare counts
+#: substring problem
+#: sliding window
+
+
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        if t == "":
+            return ""
+
+        countT, window = {}, {}
+        for c in t:
+            countT[c] = 1 + countT.get(c, 0)
+
+        have, need = 0, len(countT)
+        res, resLen = [-1, -1], float("infinity")
+        l = 0
+        for r in range(len(s)):
+            c = s[r]
+            window[c] = 1 + window.get(c, 0)
+
+            if c in countT and window[c] == countT[c]:
+                have += 1
+
+            while have == need:
+                # update our result
+                if (r - l + 1) < resLen:
+                    res = [l, r]
+                    resLen = r - l + 1
+                # pop from the left of our window
+                window[s[l]] -= 1
+                if s[l] in countT and window[s[l]] < countT[s[l]]:
+                    have -= 1
+                l += 1
+        l, r = res
+        return s[l: r + 1] if resLen != float("infinity") else ""
+
+######################################################
+
+# 20. Valid Parentheses
 
 # use a stack
 # if opening and closing matching, pop them,
-# if not possible return false ig?
+# if not possible return false
 
 
 class Solution:
-	def isValid(self, s: str) -> bool:
-		Map = {")": "(", "]": "[", "}": "{"}
-		stack = []
+    def isValid(self, s: str) -> bool:
+        Map = {")": "(", "]": "[", "}": "{"}
+        stack = []
 
-		for c in s:
-			if c not in Map:
-				stack.append(c)
-				continue
-			if not stack or stack[-1] != Map[c]:
-				return False
-			stack.pop()
+        for c in s:
+            if c not in Map:
+                stack.append(c)
+                continue
+            if not stack or stack[-1] != Map[c]:
+                return False
+            stack.pop()
 
-		return not stack
+        return not stack
 
+######################################################
 
-------------------------------------------------
-
-33. Search in Rotated Sorted Array
-: left pointer and right pointer, linear search since the array is sorted?
+# 33. Search in Rotated Sorted Array
+# left pointer and right pointer, linear search since the array is sorted
 
 
 class Solution:
-	def search(self, nums: List[int], target: int) -> int:
-		l, r = 0, len(nums) - 1
-		while l <= r:
-			mid = (l + r) // 2
-			if target == nums[mid]:
-				return mid
-			# left sorted portion
-			if nums[l] <= nums[mid]:
-				if target > nums[mid] or target < nums[l]:
-					l = mid + 1
-				else:
-					r = mid - 1
-					# right sorted protio
-			else:
-				if target < nums[mid] or target > nums[r]:
-					r = mid - 1
-				else:
-					l = mid + 1
-		return -1
+    def search(self, nums: List[int], target: int) -> int:
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            mid = (l + r) // 2
+            if target == nums[mid]:
+                return mid
+            # left sorted portion
+            if nums[l] <= nums[mid]:
+                if target > nums[mid] or target < nums[l]:
+                    l = mid + 1
+                else:
+                    r = mid - 1
+                    # right sorted protio
+            else:
+                if target < nums[mid] or target > nums[r]:
+                    r = mid - 1
+                else:
+                    l = mid + 1
+        return -1
 
 # Time complexity: Binary search: O(n log n)
 # O(n) also possible but not as efficient for large inputs.
 
+######################################################
+# 206. Reverse a linked list
+#: Iterate through the list moving the values over.
+#: Iterative solution
 
----------------------------------------------------------------------
+#: while curr
+#: temp = curr.next
+#: curr.next = prev(we make a temp variable, move old value into our temp)
+#: prev = curr(we move old value into current)
+#: curr = temp(we take the value from temp and set it as current)
 
-206. Reverse a linked list
-: Iterate through the list moving the values over.
-: Iterative solution
-
-: while curr
-: temp = curr.next
-: curr.next = prev(we make a temp variable, move old value into our temp)
-: prev = curr(we move old value into current)
-: curr = temp(we take the value from temp and set it as current)
-
-: 123
-: 3 temp
-: 32
-: tmp 1
-: 321
-: I guess
-
+#: 123
+#: 3 temp
+#: 32
+#: tmp 1
+#: 321
 
 class Solution:
-	def reverseList(self, head: ListNode) -> ListNode:
-		prev, curr = None, head  # init list
+    def reverseList(self, head: ListNode) -> ListNode:
+        prev, curr = None, head  # init list
 
-		while curr:  # while loop
-			nxt = curr.next  # temporary variable
-			curr.next = prev  # we move previous value forward
-			prev = curr  # the value before it becomes the new current value we're looking at
-			curr = nxt  # we move current value forward
-		return prev
+        while curr:  # while loop
+            nxt = curr.next  # temporary variable
+            curr.next = prev  # we move previous value forward
+            prev = curr  # the value before it becomes the new current value we're looking at
+            curr = nxt  # we move current value forward
+        return prev
 
 
 # Time complexity: O(n)
 # Space complexity: O(1)
 # Recursive is mem is o(1) needs extra mem though.
--------------------------------------
+######################################################
 
-206. Reverse a linked list
-: Recursive solution
-: Keep track of head
-: Swap values with the NewHead
-: Pointers going to the opposite direction from the end of the list
+# 206. Reverse a linked list
+#: Recursive solution
+#: Keep track of head
+#: Swap values with the NewHead
+#: Pointers going to the opposite direction from the end of the list
 
 
 class Solution:
-	def reverseList(self, head: ListNode) -> ListNode:
+    def reverseList(self, head: ListNode) -> ListNode:
 
-		if not head:
-			return None
+        if not head:
+            return None
 
-		newHead = head
-		if head.next:
-			newHead = self.reverseList(head.next)
-			head.next.next = head
-		head.next = None
+        newHead = head
+        if head.next:
+            newHead = self.reverseList(head.next)
+            head.next.next = head
+        head.next = None
 
-		return newHead
-		# size 2, recursive call size 2, O(n) memory
+        return newHead
+        # size 2, recursive call size 2, O(n) memory
 
 
---------------------------------------------------------
-21. Merge Two Sorted Lists
+######################################################
+# 21. Merge Two Sorted Lists
 
-Merge Two Sorted Lists.
+# Merge Two Sorted Lists.
 
 # Make a new list out of the two
 # dummy list
@@ -640,31 +633,30 @@ Merge Two Sorted Lists.
 
 
 class Solution:
-	def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
-		dummy = ListNode()
-		tail = dummy
+    def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
+        dummy = ListNode()
+        tail = dummy
 
-		while list1 and list2:
-			if list1.val < list2.val:
-				tail.next = list1
-				list1 = list1.next
-			else:
-				tail.next = list2
-				list2 = list2.next
-			tail = tail.next
+        while list1 and list2:
+            if list1.val < list2.val:
+                tail.next = list1
+                list1 = list1.next
+            else:
+                tail.next = list2
+                list2 = list2.next
+            tail = tail.next
 
-		if list1:
-			tail.next = list1
-		elif list2:
-			tail.next = list2
+        if list1:
+            tail.next = list1
+        elif list2:
+            tail.next = list2
 
-		return dummy.next
+        return dummy.next
 
+######################################################
+# 143. Reorder List
 
-----------------------------------------------------------------------------------------
-143. Reorder List
-
-( in place)
+(in place)
 # slow pointer and fast pointer
 # find the middle of the list
 # reverse 2nd half
@@ -678,35 +670,35 @@ class Solution:
 
 
 class Solution:
-	def reorderList(self, head: Optional[ListNode]) -> None:
-		# find middle
-		slow, fast = head, head.next
-		while fast and fast.next:
-			slow = slow.next
-			fast = fast.next.next
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        # find middle
+        slow, fast = head, head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
 
-		# reverse 2nd half
-		second = slow.next
-		prev = slow.next = None  # we define what next is, with prev
-		while second:
-			tmp = second.next
-			second.next = prev
-			prev = second
-			second = tmp
+        # reverse 2nd half
+        second = slow.next
+        prev = slow.next = None  # we define what next is, with prev
+        while second:
+            tmp = second.next
+            second.next = prev
+            prev = second
+            second = tmp
 
-			# merge
-		first, second = head, prev
-		while second:
-			tmp1, tmp2 = first.next, second.next
-			first.next = second
-			second.next = tmp1
-			first, second = tmp1, tmp2
+            # merge
+        first, second = head, prev
+        while second:
+            tmp1, tmp2 = first.next, second.next
+            first.next = second
+            second.next = tmp1
+            first, second = tmp1, tmp2
 
 
 # linear time O(1)
 # We're not using extra memory so I assume it's O(1) as well.
----------------------------------------------------------------------------------------------------
-19. Remove Nth Node From End of List
+- --------------------------------------------------------------------------------------------------
+# 19. Remove Nth Node From End of List
 
 # left pointer, right pointer, nth distance.
 # shifting right by same amount of distance, say n=2
@@ -720,27 +712,25 @@ class Solution:
 
 
 class Solution:
-	def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-		dummy = ListNode(0, head)
-		left = dummy
-		right = head
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        dummy = ListNode(0, head)
+        left = dummy
+        right = head
 
-		while n > 0 and right:
-			right = right.next
-			n -= 1
+        while n > 0 and right:
+            right = right.next
+            n -= 1
 
-		while right:
-			left = left.next
-			right = right.next
+        while right:
+            left = left.next
+            right = right.next
 
-				# delete
-		left.next = left.next.next
-		return dummy.next
+                # delete
+        left.next = left.next.next
+        return dummy.next
 
-
---------------------------------------------------------------------------------------------------------
-
-141. Linked List Cycle
+######################################################
+# 141. Linked List Cycle
 
 # Floyds Algorithm
 # Tortoise and hare problem
@@ -751,7 +741,7 @@ class Solution:
 # they will meet at some point, if there's a cycle, since the cycle has to start somewhere.
 
 
-141. Linked List Cycle
+# 141. Linked List Cycle
 
 # Definition for singly-linked list.
 # class ListNode:
@@ -761,20 +751,18 @@ class Solution:
 
 
 class Solution:
-	def hasCycle(self, head: Optional[ListNode]) -> bool:
-		slow, fast = head, head
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        slow, fast = head, head
 
-		while fast and fast.next:  # while fast and fast.next
-			slow = slow.next
-			fast = fast.next.next
-			if slow == fast:
-				return True
-		return False
+        while fast and fast.next:  # while fast and fast.next
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
 
-
-----------------------------------
-
-23. Merge k Sorted Lists *
+######################################################
+# 23. Merge k Sorted Lists *
 
 # merge into pieces
 # mege pieces together
@@ -789,42 +777,39 @@ class Solution:
 
 
 class Solution:
-	def mergeKLists(self, lists: List[ListNode]) -> ListNode:
-		if not lists or len(lists) == 0:
-			return None
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        if not lists or len(lists) == 0:
+            return None
 
-		while len(lists) > 1:
-			mergedLists = []
-			for i in range(0, len(lists), 2):
-				l1 = lists[i]
-				l2 = lists[i + 1] if (i + 1) < len(lists) else None
-				mergedLists.append(self.mergeList(l1, l2))
-			lists = mergedLists
-		return lists[0]
+        while len(lists) > 1:
+            mergedLists = []
+            for i in range(0, len(lists), 2):
+                l1 = lists[i]
+                l2 = lists[i + 1] if (i + 1) < len(lists) else None
+                mergedLists.append(self.mergeList(l1, l2))
+            lists = mergedLists
+        return lists[0]
 
-	def mergeList(self, l1, l2):
-		dummy = ListNode()
-		tail = dummy
+    def mergeList(self, l1, l2):
+        dummy = ListNode()
+        tail = dummy
 
-		while l1 and l2:
-			if l1.val < l2.val:
-				tail.next = l1
-				l1 = l1.next
-			else:
-				tail.next = l2
-				l2 = l2.next
-			tail = tail.next
-		if l1:
-			tail.next = l1
-		if l2:
-			tail.next = l2
-		return dummy.next
+        while l1 and l2:
+            if l1.val < l2.val:
+                tail.next = l1
+                l1 = l1.next
+            else:
+                tail.next = l2
+                l2 = l2.next
+            tail = tail.next
+        if l1:
+            tail.next = l1
+        if l2:
+            tail.next = l2
+        return dummy.next
 
 # Time complexity O(n log k)
-
-
--------------------------------
-
+######################################################
 # swap the children
 # compertmentalize into recursive
 
@@ -836,24 +821,22 @@ class Solution:
 #         self.left = left
 #         self.right = right
 class Solution:
-	def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-		if not root:
-			return None
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return None
 
-		# swap the children
+        # swap the children
 
-		tmp = root.left  # temporary variable
-		root.left = root.right  # rootleftbecomesrootright
-		root.right = tmp  # rootright becomes temp
+        tmp = root.left  # temporary variable
+        root.left = root.right  # rootleftbecomesrootright
+        root.right = tmp  # rootright becomes temp
 
-		self.invertTree(root.left)  # invert the left root of the tree
-		self.invertTree(root.right)  # invert the right root of the tree
-		return root
-
-
-------------------------------------------------------------------------
+        self.invertTree(root.left)  # invert the left root of the tree
+        self.invertTree(root.right)  # invert the right root of the tree
+        return root
+######################################################
 if not root:
-	return none
+    return none
 
 tmp = root.left
 roof.left = root.right
@@ -863,9 +846,8 @@ self.invertTree(root.left)
 self.invertTree(root.right)
 return root
 
-----------------------------------------------------------------
-
-Invert a binary tree
+######################################################
+# Invert a binary tree
 
 # BFS
 # DFS
@@ -882,21 +864,20 @@ Invert a binary tree
 
 
 class Solution:
-	def maxDepth(self, root: Optional[TreeNode]) -> int:
-		stack = [[root, 1]]
-		res = 0
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        stack = [[root, 1]]
+        res = 0
 
-		while stack:
-			node, depth = stack.pop()
+        while stack:
+            node, depth = stack.pop()
 
-			if node:
-				res = max(res, depth)
-				stack.append([node.left, depth + 1])
-				stack.append([node.right, depth + 1])
-		return res
+            if node:
+                res = max(res, depth)
+                stack.append([node.left, depth + 1])
+                stack.append([node.right, depth + 1])
+        return res
 
-
-------------------------------------------------------------------
+######################################################
 
 100. Same Tree
 
@@ -911,19 +892,19 @@ time complexity O(p+q)
 
 
 class Solution:
-	def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-	# dealing with edge cases
-		if not p and not q:
-			return True
-		if not p or not q or p.val != q.val:
-			return False
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+    # dealing with edge cases
+        if not p and not q:
+            return True
+        if not p or not q or p.val != q.val:
+            return False
 
-		# AND together, true or false
-		return (self.isSameTree(p.left, q.left) and
-		self.isSameTree(p.right, q.right))
+        # AND together, true or false
+        return (self.isSameTree(p.left, q.left) and
+        self.isSameTree(p.right, q.right))
 
 
-------------------------------------------------------------------
+######################################################
 
 572. Subtree of Another Tree
 
@@ -937,25 +918,25 @@ class Solution:
 #         self.left = left
 #         self.right = right
 class Solution:
-	def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
-		if not t:
-			return True
-		if not s:
-			return False
+    def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
+        if not t:
+            return True
+        if not s:
+            return False
 
-		if self.sameTree(s, t):
-			return True
-		return self.isSubtree(s.left, t) or self.isSubtree(s.right, t)
+        if self.sameTree(s, t):
+            return True
+        return self.isSubtree(s.left, t) or self.isSubtree(s.right, t)
 
-	def sameTree(self, s, t):
-		if not s and not t:
-			return True
-		if s and t and s.val == t.val:
-			return self.sameTree(s.left, t.left) and self.sameTree(s.right, t.right)
-		return False
+    def sameTree(self, s, t):
+        if not s and not t:
+            return True
+        if s and t and s.val == t.val:
+            return self.sameTree(s.left, t.left) and self.sameTree(s.right, t.right)
+        return False
 
 
----
+######################################################
 
 235. Lowest Common Ancestor of a Binary Search Tree
 
@@ -970,19 +951,19 @@ class Solution:
 
 
 class Solution:
-	def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-			cur = root
-			while cur:
-				if p.val > cur.val and q.val > cur.val:
-					cur = cur.right
-				elif p.val < cur.val and q.val < cur.val:
-					cur = cur.left
-				else:
-					return cur
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+            cur = root
+            while cur:
+                if p.val > cur.val and q.val > cur.val:
+                    cur = cur.right
+                elif p.val < cur.val and q.val < cur.val:
+                    cur = cur.left
+                else:
+                    return cur
 
 
 day 3
------
+######################################################
 
 day 4
 
@@ -1002,27 +983,27 @@ day 4
 
 
 class Solution:
-	def levelOrder(self, root: TreeNode) -> List[List[int]]:
-		res = []
-		q = collections.deque()
-		if root:
-			q.append(root)
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        res = []
+        q = collections.deque()
+        if root:
+            q.append(root)
 
-		while q:
-			val = []
+        while q:
+            val = []
 
-			for i in range(len(q)):
-				node = q.popleft()
-				val.append(node.val)
-				if node.left:
-					q.append(node.left)
-				if node.right:
-					q.append(node.right)
-			res.append(val)
-		return res
+            for i in range(len(q)):
+                node = q.popleft()
+                val.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            res.append(val)
+        return res
 
 
------
+######################################################
 
 98. Validate Binary Search Tree
 
@@ -1035,19 +1016,19 @@ class Solution:
 
 
 class Solution:
-	def isValidBST(self, root: TreeNode) -> bool:
-		def valid(node, left, right):
-			if not node:
-				return True
-			if not (node.val < right and node.val > left):
-				return False
+    def isValidBST(self, root: TreeNode) -> bool:
+        def valid(node, left, right):
+            if not node:
+                return True
+            if not (node.val < right and node.val > left):
+                return False
 
-			return valid(node.left, left, node.val) and valid(node.right, node.val, right)
+            return valid(node.left, left, node.val) and valid(node.right, node.val, right)
 
-		return valid(root, float("-inf"), float("inf"))
+        return valid(root, float("-inf"), float("inf"))
 
 
----------------
+######################################################
 
 230. Kth Smallest Element in a BST
 
@@ -1057,24 +1038,24 @@ class Solution:
 
 
 class Solution:
-	def kthSmallest(self, root: TreeNode, k: int) -> int:
-	n = 0
-	stack = []
-	cur = root
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+    n = 0
+    stack = []
+    cur = root
 
-	while cur and stack:
-	while cur:
-		stack.append(cur)
-		cur = left.cur
+    while cur and stack:
+    while cur:
+        stack.append(cur)
+        cur = left.cur
 
-		cur = stack.pop()
-		n += 1
-		if n == k:
-			return cur.val
-		cur = cur.right
+        cur = stack.pop()
+        n += 1
+        if n == k:
+            return cur.val
+        cur = cur.right
 
 
----------------
+######################################################
 105. Construct Binary Tree from Preorder and Inorder Traversal
 
 # inorder, take length of preorders
@@ -1094,7 +1075,7 @@ class Solution:
         return root
 
 
----------------------
+######################################################
 
 
 # Definition for a binary tree node.
@@ -1125,7 +1106,7 @@ class Solution:
         return res[0]
 
 
-------------
+######################################################
 
 # preorder
 
@@ -1171,14 +1152,12 @@ class Codec:
 
         return dfs()
 
-
------------------------------------------------
-
+######################################################
 
 class TrieNode:
-	def __init__(self):
-	self.children = {}
-	self.end OfWord = False
+    def __init__(self):
+    self.children = {}
+    self.end OfWord = False
 
 
 class Trie:
@@ -1194,30 +1173,28 @@ def insert(self, word: str) -> None:
 cur = self.root
 
 for c in word:
-	if c not in cur.children:
-	cur.children[c] = TrieNode(9
-	cur=cur.children[c]
-	cur.endOfWord=True
-	Def search(self, word: str) -> bool:
-	cur=self.root
+    if c not in cur.children:
+    cur.children[c] = TrieNode(9
+    cur=cur.children[c]
+    cur.endOfWord=True
+    Def search(self, word: str) -> bool:
+    cur = self.root
 
-	for c i n word:
-	 if c not in cur.children:
-	  return false
-	  cur=cur.children[c]
-	  return cur.endofWord
+    for c i n word:
+     if c not in cur.children:
+      return false
+      cur = cur.children[c]
+      return cur.endofWord
 
-	def startWith(self, prefix: str) -> bool:
-	cur=self.root
+    def startWith(self, prefix: str) -> bool:
+    cur = self.root
 
-	for c in prefix:
-	if c not in cur.children:
-	 return False
-	 cur=cur.children[c]
-	  return True)
-
------------
-
+    for c in prefix:
+    if c not in cur.children:
+     return False
+     cur = cur.children[c]
+      return True)
+######################################################
 # node has children characters, and bool if its an ending character, node DOESN’T have or need char, since root node doesn’t have a char, only children;
 
 
@@ -1270,53 +1247,52 @@ class Trie:
             curr = curr.children[i]
         return True
 
-
---------------------------------------------------------
+######################################################
 211. Design Add and Search Words Data Structure
 
 # if char = "." run search for remaining portion of word on all of curr nodes children;
 
 
 class TrieNode:
-	def __init__(self):
-	self.children = {}  # a : TrieNode
-	self.word = False
+    def __init__(self):
+    self.children = {}  # a : TrieNode
+    self.word = False
 
-	class WordDictioanry:
-	def __init__(self):
-	self.root = TrieNode()
+    class WordDictioanry:
+    def __init__(self):
+    self.root = TrieNode()
 
-	def addWord(self, word: str) -> None:
-	cur = self.root
-	for c in word:
-		if c not in cur.children:
-		cur.children[c] = TrieNode()
-		cur = cur.children[c]
+    def addWord(self, word: str) -> None:
+    cur = self.root
+    for c in word:
+        if c not in cur.children:
+        cur.children[c] = TrieNode()
+        cur = cur.children[c]
 
-		cur.word = True
+        cur.word = True
 
-		def search(self, word: str) -> bool:
-			def dfs(j, root):
-				cur = roo
+        def search(self, word: str) -> bool:
+            def dfs(j, root):
+                cur = roo
 
-				for i in range(j, len(word)):
-				c = word[i]
-				if c == ".":
-					for child in cur.children.values():
-				if dfs(i + 1, child):
-					return True
-				return False
-			else:
-				if c not in cur.children:
-				return False
-			cur = cur.children[c]
-		return cur.word
+                for i in range(j, len(word)):
+                c = word[i]
+                if c == ".":
+                    for child in cur.children.values():
+                if dfs(i + 1, child):
+                    return True
+                return False
+            else:
+                if c not in cur.children:
+                return False
+            cur = cur.children[c]
+        return cur.word
 
-		return dfs(0, self.root)
+        return dfs(0, self.root)
 
-		----
+        - ---
 
-		class TrieNode:
+        class TrieNode:
     def __init__(self):
         self.children = {}  # a : TrieNode
         self.word = False
@@ -1352,26 +1328,24 @@ class WordDictionary:
             return cur.word
 
         return dfs(0, self.root)
-
-----------------------------------------
+######################################################
 
 Backtracking tries
-# prefix tree 
+# prefix tree
 
-
------------------------------
+######################################################
 
 295. Find Median from Data Stream
 
 
 # heap is a binary tree
 # large heap
-# small heap 
-# we got a min heap, value at bottom 
-# max heap, value at top 
----
+# small heap
+# we got a min heap, value at bottom
+# max heap, value at top
+- --
 
-# find median 
+# find median
 
 class MedianFinder:
     def __init__(self):
@@ -1385,7 +1359,7 @@ class MedianFinder:
         if self.small and self.large and (-1 * self.small[0]) > self.large[0]:
             val = -1 * heapq.heappop(self.small)
             heapq.heappush(self.large, val)
- 
+
         if len(self.small) > len(self.large) + 1:
             val = -1 * heapq.heappop(self.small)
             heapq.heappush(self.large, val)
@@ -1399,13 +1373,12 @@ class MedianFinder:
         elif len(self.large) > len(self.small):
             return self.large[0]
         return (-1 * self.small[0] + self.large[0]) / 2
-
-------------------------------------------------------------
+######################################################
 # Combination sum
 
 # combinatorics
 # list, add sum at the end, if not possible for multiplication don't doesn
-# just keep going until the end 
+# just keep going until the end
 
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
@@ -1425,11 +1398,11 @@ class Solution:
 
         dfs(0, [], 0)
         return res
-----------------------------------------------------------------
+- ---------------------------------------------------------------
 
 # 79. Word Search
 # backtracking
-# dfs, recursive 
+# dfs, recursive
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         ROWS, COLS = len(board), len(board[0])
@@ -1465,8 +1438,8 @@ class Solution:
    # Time complexity  # O(n * m * 4^n)
 
    ###################################
-   # 200. Number of islands 
-   # BFS recursive ig 
+   # 200. Number of islands
+   # BFS recursive ig
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         if not grid or not grid[0]:
@@ -1500,8 +1473,8 @@ class Solution:
 
 ################################################################
 # 133. Clone Graph
-# DFS 
-# We copy over the nodes 
+# DFS
+# We copy over the nodes
 # Return None if Null
 class Solution:
     def cloneGraph(self, node: "Node") -> "Node":
@@ -1519,4 +1492,137 @@ class Solution:
 
         return dfs(node) if node else None
 
+##########
+# 417. Pacific Atlantic Water Flow
+# dfs
+# backtracking I guess
+# avoiding edge case, OOB
+class Solution:
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+        ROWS, COLS = len(heights), len(heights[0])
+        pac, atl = set(), set()
+
+        def dfs(r, c, visit, prevHeight):
+            if (
+                (r, c) in visit
+                or r < 0
+                or c < 0
+                or r == ROWS
+                or c == COLS
+                or heights[r][c] < prevHeight
+            ):
+                return
+            visit.add((r, c))
+            dfs(r + 1, c, visit, heights[r][c])
+            dfs(r - 1, c, visit, heights[r][c])
+            dfs(r, c + 1, visit, heights[r][c])
+            dfs(r, c - 1, visit, heights[r][c])
+
+        for c in range(COLS):
+            dfs(0, c, pac, heights[0][c])
+            dfs(ROWS - 1, c, atl, heights[ROWS - 1][c])
+
+        for r in range(ROWS):
+            dfs(r, 0, pac, heights[r][0])
+            dfs(r, COLS - 1, atl, heights[r][COLS - 1])
+
+        res = []
+        for r in range(ROWS):
+            for c in range(COLS):
+                if (r, c) in pac and (r, c) in atl:
+                    res.append([r, c])
+        return res
+
+######################################################
+# 207. Course Schedule
+#
+#
+#
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        # dfs
+        preMap = {i: [] for i in range(numCourses)}
+
+        # map each course to : prereq list
+        for crs, pre in prerequisites:
+            preMap[crs].append(pre)
+
+        visiting = set()
+
+        def dfs(crs):
+            if crs in visiting:
+                return False
+            if preMap[crs] == []:
+                return True
+
+            visiting.add(crs)
+            for pre in preMap[crs]:
+                if not dfs(pre):
+                    return False
+            visiting.remove(crs)
+            preMap[crs] = []
+            return True
+
+        for c in range(numCourses):
+            if not dfs(c):
+                return False
+        return True
+
+######################################################
+# Union find
+# lc 537
+# parent stuff
+class UnionFind:
+    def __init__(self):
+        self.f = {}
+
+        def findParent(self, x):
+            y = self.f.get(x, x)
+            if x != y:
+                y = self.f[x] = self.findParent(y)
+            return y
+
+        def union(self, x, y):
+            self.f[self.findParent(x)] = self.findParent(y)
+
+    class Solution:
+        def countComponents(self, n: int, edges: List[List[int]]) -> int:
+            dsu = UnionFind()
+            for a, b in edges:
+                dsu.union(a, b)
+            return len(set(dsu.findParent(x) for x in range(n)))
+########################
+# Problem is free on Lintcode
+
+# traverse graph, do DFS 
+class Solution:
+    """
+    @param n: An integer
+    @param edges: a list of undirected edges
+    @return: true if it's a valid tree, or false
+    """
+
+    def validTree(self, n, edges):
+        if not n:
+            return True
+        adj = {i: [] for i in range(n)}
+        for n1, n2 in edges:
+            adj[n1].append(n2)
+            adj[n2].append(n1)
+
+        visit = set()
+
+        def dfs(i, prev):
+            if i in visit:
+                return False
+
+            visit.add(i)
+            for j in adj[i]:
+                if j == prev:
+                    continue
+                if not dfs(j, i):
+                    return False
+            return True
+
+        return dfs(0, -1) and n == len(visit)
 
